@@ -1,5 +1,3 @@
-<script type="text/javascript">
-
 d3.json("https://raw.githubusercontent.com/diegolpedro/infovis/gh-pages/MC2/csv/evolucion_anual.json", function(error, data) {
 
   // If there's an error, raise it
@@ -87,4 +85,3 @@ d3.json("https://raw.githubusercontent.com/diegolpedro/infovis/gh-pages/MC2/csv/
   });
   $("#data-select").trigger("change");
 });
-</script>
