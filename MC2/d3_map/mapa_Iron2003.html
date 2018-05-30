@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+Copyright (c) 2018 by anonymous (http://jsbin.com/xehitupepo/1/edit)
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<meta charset="utf-8">
+<head>
+  <title>Force layout (foci)</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
+  
+  <style type="text/css">
+  .bgimg {
+    background-image: url('https://raw.githubusercontent.com/diegolpedro/infovis/gh-pages/MC2/img/Waterways%20Final.jpg');
+    background-repeat: no-repeat;
+    }
+  </style>
+  
+</head>
+<body>
+  <div id="title">
+    <font face="Arial"; size=8;>Concentración de Iron - 2003</font>
+  </div>  
+  <div id="content" class="bgimg">
+    <svg width="887" height="887">
+    </svg>
+  </div>
+  
+  <script>
+      var nodes = [{"id":298323,"value":0.437,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":299010,"value":0.339,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":299678,"value":0.333,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":292822,"value":1.119,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":293442,"value":1.168,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":294060,"value":0.611,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":300356,"value":0.406,"location":"Somchair","measure":"Iron","grupo":5,"x":273,"y":461},
+		{"id":300728,"value":0.171,"location":"Busarakhan","measure":"Iron","grupo":7,"x":699,"y":374},
+		{"id":303126,"value":0.375,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
+		{"id":303490,"value":0.419,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
+		{"id":303836,"value":0.339,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
+		{"id":304195,"value":0.354,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
+		{"id":304534,"value":0.314,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
+		{"id":304880,"value":0.690,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
+		{"id":297891,"value":0.752,"location":"Kohsoom","measure":"Iron","grupo":4,"x":704,"y":257},
+		{"id":298352,"value":0.253,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":299038,"value":0.293,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":299706,"value":0.211,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":298385,"value":0.648,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":299071,"value":1.282,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":299739,"value":0.447,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":292854,"value":1.123,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":293474,"value":2.097,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":294092,"value":0.636,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":303159,"value":0.992,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
+		{"id":303521,"value":0.550,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
+		{"id":303868,"value":0.457,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
+		{"id":304227,"value":0.549,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
+		{"id":304566,"value":0.505,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
+		{"id":304911,"value":0.455,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
+		{"id":297927,"value":2.660,"location":"Kohsoom","measure":"Iron","grupo":4,"x":704,"y":257},
+		{"id":298417,"value":0.872,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":299103,"value":0.816,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":299771,"value":0.806,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":300387,"value":0.552,"location":"Somchair","measure":"Iron","grupo":5,"x":273,"y":461},
+		{"id":300761,"value":0.351,"location":"Busarakhan","measure":"Iron","grupo":7,"x":699,"y":374},
+		{"id":298451,"value":0.458,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":299137,"value":0.795,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":299805,"value":0.647,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":292907,"value":0.325,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":293526,"value":0.187,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":294144,"value":0.351,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":304261,"value":0.883,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
+		{"id":304600,"value":0.621,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
+		{"id":304945,"value":0.334,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
+		{"id":303194,"value":0.944,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
+		{"id":303555,"value":1.261,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
+		{"id":303902,"value":0.604,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
+		{"id":297963,"value":2.028,"location":"Kohsoom","measure":"Iron","grupo":4,"x":704,"y":257},
+		{"id":298485,"value":0.855,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":299167,"value":1.029,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":299834,"value":1.154,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":300421,"value":0.900,"location":"Somchair","measure":"Iron","grupo":5,"x":273,"y":461},
+		{"id":300795,"value":0.872,"location":"Busarakhan","measure":"Iron","grupo":7,"x":699,"y":374},
+		{"id":292937,"value":0.310,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":293555,"value":0.320,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":294173,"value":0.540,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":298515,"value":0.743,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":299197,"value":0.579,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":299863,"value":0.674,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":292964,"value":0.962,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":293582,"value":1.402,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":294200,"value":1.381,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":303226,"value":0.627,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
+		{"id":303586,"value":0.335,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
+		{"id":303934,"value":0.264,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
+		{"id":297997,"value":0.543,"location":"Kohsoom","measure":"Iron","grupo":4,"x":704,"y":257},
+		{"id":300453,"value":0.624,"location":"Somchair","measure":"Iron","grupo":5,"x":273,"y":461},
+		{"id":300827,"value":0.473,"location":"Busarakhan","measure":"Iron","grupo":7,"x":699,"y":374},
+		{"id":304293,"value":0.355,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
+		{"id":304632,"value":0.530,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
+		{"id":304977,"value":0.637,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
+		{"id":298547,"value":0.231,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":299229,"value":0.671,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":299895,"value":0.528,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":298578,"value":0.636,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":299260,"value":0.996,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":299926,"value":0.700,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":303256,"value":0.671,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
+		{"id":303616,"value":0.439,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
+		{"id":303964,"value":0.718,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
+		{"id":300483,"value":0.665,"location":"Somchair","measure":"Iron","grupo":5,"x":273,"y":461},
+		{"id":300857,"value":0.918,"location":"Busarakhan","measure":"Iron","grupo":7,"x":699,"y":374},
+		{"id":304323,"value":0.643,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
+		{"id":304662,"value":0.690,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
+		{"id":305007,"value":0.864,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
+		{"id":298039,"value":0.708,"location":"Kohsoom","measure":"Iron","grupo":4,"x":704,"y":257},
+		{"id":298609,"value":0.632,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":299291,"value":1.065,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":299957,"value":0.890,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":293043,"value":0.414,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":293661,"value":0.181,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":294279,"value":0.146,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":298636,"value":0.180,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":299318,"value":0.440,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":299984,"value":1.131,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":293082,"value":0.204,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":293700,"value":0.599,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":294318,"value":0.138,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":298079,"value":0.284,"location":"Kohsoom","measure":"Iron","grupo":4,"x":704,"y":257},
+		{"id":298673,"value":0.077,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":299355,"value":0.539,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":300021,"value":0.580,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":303283,"value":2.215,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
+		{"id":303643,"value":2.498,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
+		{"id":303991,"value":3.068,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
+		{"id":304350,"value":1.214,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
+		{"id":304689,"value":1.728,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
+		{"id":305034,"value":1.641,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
+		{"id":300510,"value":2.030,"location":"Somchair","measure":"Iron","grupo":5,"x":273,"y":461},
+		{"id":300884,"value":0.721,"location":"Busarakhan","measure":"Iron","grupo":7,"x":699,"y":374},
+		{"id":293121,"value":0.076,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":293739,"value":0.026,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":294357,"value":0.093,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":293162,"value":0.034,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":293780,"value":0.057,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":294398,"value":0.106,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":298118,"value":0.072,"location":"Kohsoom","measure":"Iron","grupo":4,"x":704,"y":257},
+		{"id":293198,"value":0.954,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":293816,"value":0.800,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":294434,"value":1.332,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":298156,"value":0.470,"location":"Kohsoom","measure":"Iron","grupo":4,"x":704,"y":257},
+		{"id":298168,"value":37.959,"location":"Kohsoom","measure":"Iron","grupo":4,"x":704,"y":257},
+		{"id":298744,"value":17.970,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":300092,"value":20.688,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":300556,"value":24.790,"location":"Somchair","measure":"Iron","grupo":5,"x":273,"y":461},
+		{"id":300930,"value":21.665,"location":"Busarakhan","measure":"Iron","grupo":7,"x":699,"y":374},
+		{"id":303329,"value":34.413,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
+		{"id":304037,"value":32.000,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
+		{"id":305080,"value":28.901,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
+		{"id":298782,"value":0.118,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":299442,"value":0.190,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":300130,"value":0.234,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":300594,"value":0.250,"location":"Somchair","measure":"Iron","grupo":5,"x":273,"y":461},
+		{"id":300968,"value":1.450,"location":"Busarakhan","measure":"Iron","grupo":7,"x":699,"y":374},
+		{"id":303367,"value":0.319,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
+		{"id":303705,"value":0.492,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
+		{"id":304073,"value":0.218,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
+		{"id":298807,"value":0.220,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":299467,"value":0.373,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":300155,"value":0.155,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":304411,"value":0.480,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
+		{"id":304750,"value":0.312,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
+		{"id":305117,"value":0.196,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
+		{"id":298208,"value":1.014,"location":"Kohsoom","measure":"Iron","grupo":4,"x":704,"y":257},
+		{"id":299492,"value":0.512,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":300620,"value":3.498,"location":"Somchair","measure":"Iron","grupo":5,"x":273,"y":461},
+		{"id":300994,"value":2.962,"location":"Busarakhan","measure":"Iron","grupo":7,"x":699,"y":374},
+		{"id":303731,"value":1.323,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
+		{"id":304776,"value":1.253,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
+		{"id":298852,"value":0.432,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":299522,"value":0.039,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":300200,"value":0.182,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":293249,"value":0.470,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":293867,"value":0.282,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":294485,"value":0.257,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":300650,"value":0.138,"location":"Somchair","measure":"Iron","grupo":5,"x":273,"y":461},
+		{"id":301023,"value":0.477,"location":"Busarakhan","measure":"Iron","grupo":7,"x":699,"y":374},
+		{"id":298884,"value":0.159,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":299553,"value":0.171,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":300231,"value":0.203,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":293284,"value":0.069,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":293902,"value":0.158,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":294520,"value":0.116,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":304458,"value":0.221,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
+		{"id":304805,"value":0.192,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
+		{"id":305164,"value":0.159,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
+		{"id":303414,"value":0.361,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
+		{"id":303761,"value":0.331,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
+		{"id":304120,"value":0.028,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
+		{"id":293315,"value":0.072,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":293933,"value":0.031,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":294551,"value":0.081,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":298911,"value":0.304,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":299580,"value":0.283,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":300258,"value":0.343,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":303444,"value":0.397,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
+		{"id":303791,"value":0.458,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
+		{"id":304150,"value":0.279,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
+		{"id":304488,"value":0.237,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
+		{"id":304835,"value":0.267,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
+		{"id":305194,"value":0.361,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
+		{"id":300680,"value":0.558,"location":"Somchair","measure":"Iron","grupo":5,"x":273,"y":461},
+		{"id":301053,"value":0.948,"location":"Busarakhan","measure":"Iron","grupo":7,"x":699,"y":374},
+		{"id":293351,"value":0.176,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":293969,"value":0.283,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":294587,"value":0.207,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":298937,"value":0.340,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":299606,"value":0.410,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":300284,"value":0.368,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
+		{"id":298262,"value":0.512,"location":"Kohsoom","measure":"Iron","grupo":4,"x":704,"y":257},
+		{"id":293382,"value":0.281,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":294000,"value":0.593,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":294618,"value":0.566,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":293415,"value":0.332,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":294033,"value":0.285,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":294651,"value":0.337,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
+		{"id":298296,"value":0.521,"location":"Kohsoom","measure":"Iron","grupo":4,"x":704,"y":257}];
+ 
+    
+      
+      var simulation = d3.forceSimulation(nodes)
+                         .force('charge', d3.forceManyBody().strength(10))
+                         .force('x', d3.forceX(function(d) { return d.x }))
+                         .force('y', d3.forceY(function(d) { return d.y }))
+                         .force('over', d3.forceCollide(7))
+                         .on('tick', ticked);
+            
+      function ticked() {
+      
+          var u = d3.select('svg')
+                    .selectAll('circle')
+                    .data(nodes)
+          u.enter()
+            .append('circle')
+            .attr('r', function(d) { return Math.sqrt(d.value)+2 })
+            .merge(u)
+            .attr('cx', function(d) { return d.x })
+            .attr('cy', function(d) { return d.y })
+            .attr('fill', function(d) { return 'red' })
+          
+          u.exit().remove()
+          }
+      
+  </script>
+</body>
+</html>
