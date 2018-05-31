@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+Copyright (c) 2018 by anonymous (http://jsbin.com/xehitupepo/1/edit)
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<meta charset="utf-8">
+<head>
+  <title>AGOC-3A 2015</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
+  
+  <style type="text/css">
+    .bgimg {
+      background-image: url('https://raw.githubusercontent.com/diegolpedro/infovis/gh-pages/MC2/img/Waterways%20Final.jpg');
+      background-repeat: no-repeat;
+      }
+    
+    .titulo {
+      font: Verdana;
+      display: inline-block;
+      }
+    
+    .centrado{
+      margin-left:    auto;
+      margin-right:   auto;
+      }
+    
+    .contenedor{
+      border: 1px solid black; 
+      padding: 25px; 
+      width: 880px;
+    }
+  </style>
+  
+</head>
+<body>
+  <div id="contenedor" class="contenedor">
+    <div id="title" class="titulo centrado" style="width: 790px;">
+      <font face="Arial"; size=6;>&nbsp;&nbsp;Concentración de AGOC-3A</font>
+    </div>  
+    <div id="title" class="titulo centrado" style="width: 10px;">
+      <font face="Arial"; size=6;>2015</font>
+    </div>  
+    <div id="content" class="bgimg">
+      <svg width="887" height="887"></svg>
+    </div>
+  </div>
+  
+  <script>
+    var nodes = [
+    {"id":1020294,"value":0.031,"location":"Kannika","measure":"AGOC-3A","grupo":3,"x":618,"y":705},
+    {"id":1021389,"value":0.023,"location":"Kannika","measure":"AGOC-3A","grupo":3,"x":618,"y":705},
+    {"id":1022545,"value":0.03,"location":"Kannika","measure":"AGOC-3A","grupo":3,"x":618,"y":705},
+    {"id":1023702,"value":0.026,"location":"Sakda","measure":"AGOC-3A","grupo":6,"x":488,"y":828},
+    {"id":1024823,"value":0.029,"location":"Sakda","measure":"AGOC-3A","grupo":6,"x":488,"y":828},
+    {"id":1025944,"value":0.031,"location":"Sakda","measure":"AGOC-3A","grupo":6,"x":488,"y":828},
+    {"id":992108,"value":1.026,"location":"Boonsri","measure":"AGOC-3A","grupo":1,"x":475,"y":135},
+    {"id":1005526,"value":0.316,"location":"Chai","measure":"AGOC-3A","grupo":2,"x":558,"y":437},
+    {"id":1006914,"value":0.032,"location":"Chai","measure":"AGOC-3A","grupo":2,"x":558,"y":437},
+    {"id":1008276,"value":0.032,"location":"Chai","measure":"AGOC-3A","grupo":2,"x":558,"y":437},
+    {"id":1009298,"value":0.024,"location":"Somchair","measure":"AGOC-3A","grupo":5,"x":260,"y":451},
+    {"id":1010074,"value":0.028,"location":"Busarakhan","measure":"AGOC-3A","grupo":7,"x":730,"y":374},
+    {"id":990713,"value":20.951,"location":"Boonsri","measure":"AGOC-3A","grupo":1,"x":475,"y":135},
+    {"id":1004383,"value":0.025,"location":"Kohsoom","measure":"AGOC-3A","grupo":4,"x":704,"y":257},
+    {"id":1005598,"value":0.028,"location":"Chai","measure":"AGOC-3A","grupo":2,"x":558,"y":437},
+    {"id":1006986,"value":0.026,"location":"Chai","measure":"AGOC-3A","grupo":2,"x":558,"y":437},
+    {"id":1008348,"value":0.032,"location":"Chai","measure":"AGOC-3A","grupo":2,"x":558,"y":437},
+    {"id":1020348,"value":0.025,"location":"Kannika","measure":"AGOC-3A","grupo":3,"x":618,"y":705},
+    {"id":1021443,"value":0.024,"location":"Kannika","measure":"AGOC-3A","grupo":3,"x":618,"y":705},
+    {"id":1022599,"value":0.029,"location":"Kannika","measure":"AGOC-3A","grupo":3,"x":618,"y":705},
+    {"id":1023756,"value":0.031,"location":"Sakda","measure":"AGOC-3A","grupo":6,"x":488,"y":828},
+    {"id":1024877,"value":0.03,"location":"Sakda","measure":"AGOC-3A","grupo":6,"x":488,"y":828},
+    {"id":1025998,"value":0.025,"location":"Sakda","measure":"AGOC-3A","grupo":6,"x":488,"y":828},
+    {"id":1009353,"value":0.031,"location":"Somchair","measure":"AGOC-3A","grupo":5,"x":260,"y":451},
+    {"id":1010129,"value":0.072,"location":"Busarakhan","measure":"AGOC-3A","grupo":7,"x":730,"y":374},
+    {"id":1004431,"value":0.222,"location":"Kohsoom","measure":"AGOC-3A","grupo":4,"x":704,"y":257},
+    {"id":990816,"value":4.342,"location":"Boonsri","measure":"AGOC-3A","grupo":1,"x":475,"y":135},
+    {"id":992187,"value":0.122,"location":"Boonsri","measure":"AGOC-3A","grupo":1,"x":475,"y":135},
+    {"id":993555,"value":3.888,"location":"Boonsri","measure":"AGOC-3A","grupo":1,"x":475,"y":135},
+    {"id":1020401,"value":0.029,"location":"Kannika","measure":"AGOC-3A","grupo":3,"x":618,"y":705},
+    {"id":1021496,"value":0.027,"location":"Kannika","measure":"AGOC-3A","grupo":3,"x":618,"y":705},
+    {"id":1022652,"value":0.025,"location":"Kannika","measure":"AGOC-3A","grupo":3,"x":618,"y":705},
+    {"id":1023809,"value":0.032,"location":"Sakda","measure":"AGOC-3A","grupo":6,"x":488,"y":828},
+    {"id":1024930,"value":0.03,"location":"Sakda","measure":"AGOC-3A","grupo":6,"x":488,"y":828},
+    {"id":1026051,"value":0.025,"location":"Sakda","measure":"AGOC-3A","grupo":6,"x":488,"y":828},
+    {"id":990915,"value":0.026,"location":"Boonsri","measure":"AGOC-3A","grupo":1,"x":475,"y":135},
+    {"id":992286,"value":0.027,"location":"Boonsri","measure":"AGOC-3A","grupo":1,"x":475,"y":135},
+    {"id":993654,"value":0.034,"location":"Boonsri","measure":"AGOC-3A","grupo":1,"x":475,"y":135},
+    {"id":1005667,"value":0.031,"location":"Chai","measure":"AGOC-3A","grupo":2,"x":558,"y":437},
+    {"id":1007055,"value":0.029,"location":"Chai","measure":"AGOC-3A","grupo":2,"x":558,"y":437},
+    {"id":1008417,"value":0.027,"location":"Chai","measure":"AGOC-3A","grupo":2,"x":558,"y":437},
+    {"id":1009406,"value":0.026,"location":"Somchair","measure":"AGOC-3A","grupo":5,"x":260,"y":451},
+    {"id":1010182,"value":0.028,"location":"Busarakhan","measure":"AGOC-3A","grupo":7,"x":730,"y":374},
+    {"id":1004495,"value":0.025,"location":"Kohsoom","measure":"AGOC-3A","grupo":4,"x":704,"y":257},
+    {"id":1020468,"value":0.027,"location":"Kannika","measure":"AGOC-3A","grupo":3,"x":618,"y":705},
+    {"id":1021563,"value":0.031,"location":"Kannika","measure":"AGOC-3A","grupo":3,"x":618,"y":705},
+    {"id":1022719,"value":0.025,"location":"Kannika","measure":"AGOC-3A","grupo":3,"x":618,"y":705},
+    {"id":1023876,"value":0.029,"location":"Sakda","measure":"AGOC-3A","grupo":6,"x":488,"y":828},
+    {"id":1024997,"value":0.03,"location":"Sakda","measure":"AGOC-3A","grupo":6,"x":488,"y":828},
+    {"id":1026118,"value":0.027,"location":"Sakda","measure":"AGOC-3A","grupo":6,"x":488,"y":828},
+    {"id":1005752,"value":0.03,"location":"Chai","measure":"AGOC-3A","grupo":2,"x":558,"y":437},
+    {"id":1007140,"value":0.024,"location":"Chai","measure":"AGOC-3A","grupo":2,"x":558,"y":437},
+    {"id":1008502,"value":0.029,"location":"Chai","measure":"AGOC-3A","grupo":2,"x":558,"y":437},
+    {"id":991020,"value":0.026,"location":"Boonsri","measure":"AGOC-3A","grupo":1,"x":475,"y":135},
+    {"id":992391,"value":0.034,"location":"Boonsri","measure":"AGOC-3A","grupo":1,"x":475,"y":135},
+    {"id":993759,"value":0.03,"location":"Boonsri","measure":"AGOC-3A","grupo":1,"x":475,"y":135},
+    {"id":1004552,"value":0.031,"location":"Kohsoom","measure":"AGOC-3A","grupo":4,"x":704,"y":257},
+    {"id":1009474,"value":0.025,"location":"Somchair","measure":"AGOC-3A","grupo":5,"x":260,"y":451},
+    {"id":1010250,"value":0.027,"location":"Busarakhan","measure":"AGOC-3A","grupo":7,"x":730,"y":374},
+    {"id":1020536,"value":0.169,"location":"Kannika","measure":"AGOC-3A","grupo":3,"x":618,"y":705},
+    {"id":1021630,"value":0.031,"location":"Kannika","measure":"AGOC-3A","grupo":3,"x":618,"y":705},
+    {"id":1022787,"value":0.026,"location":"Kannika","measure":"AGOC-3A","grupo":3,"x":618,"y":705},
+    {"id":1023944,"value":0.031,"location":"Sakda","measure":"AGOC-3A","grupo":6,"x":488,"y":828},
+    {"id":1025065,"value":0.032,"location":"Sakda","measure":"AGOC-3A","grupo":6,"x":488,"y":828},
+    {"id":1026186,"value":0.031,"location":"Sakda","measure":"AGOC-3A","grupo":6,"x":488,"y":828},
+    {"id":991119,"value":0.032,"location":"Boonsri","measure":"AGOC-3A","grupo":1,"x":475,"y":135},
+    {"id":992490,"value":0.023,"location":"Boonsri","measure":"AGOC-3A","grupo":1,"x":475,"y":135},
+    {"id":993857,"value":0.032,"location":"Boonsri","measure":"AGOC-3A","grupo":1,"x":475,"y":135},
+    {"id":1005840,"value":0.04,"location":"Chai","measure":"AGOC-3A","grupo":2,"x":558,"y":437},
+    {"id":1007228,"value":0.049,"location":"Chai","measure":"AGOC-3A","grupo":2,"x":558,"y":437},
+    {"id":1008590,"value":0.026,"location":"Chai","measure":"AGOC-3A","grupo":2,"x":558,"y":437},
+    {"id":1009541,"value":0.03,"location":"Somchair","measure":"AGOC-3A","grupo":5,"x":260,"y":451},
+    {"id":1010317,"value":0.029,"location":"Busarakhan","measure":"AGOC-3A","grupo":7,"x":730,"y":374},
+    {"id":1004610,"value":0.028,"location":"Kohsoom","measure":"AGOC-3A","grupo":4,"x":704,"y":257},
+    {"id":1020601,"value":0.031,"location":"Kannika","measure":"AGOC-3A","grupo":3,"x":618,"y":705},
+    {"id":1021695,"value":0.026,"location":"Kannika","measure":"AGOC-3A","grupo":3,"x":618,"y":705},
+    {"id":1022852,"value":0.029,"location":"Kannika","measure":"AGOC-3A","grupo":3,"x":618,"y":705},
+    {"id":1024009,"value":0.026,"location":"Sakda","measure":"AGOC-3A","grupo":6,"x":488,"y":828},
+    {"id":1025130,"value":0.024,"location":"Sakda","measure":"AGOC-3A","grupo":6,"x":488,"y":828},
+    {"id":1026251,"value":0.027,"location":"Sakda","measure":"AGOC-3A","grupo":6,"x":488,"y":828},
+    {"id":1005922,"value":0.024,"location":"Chai","measure":"AGOC-3A","grupo":2,"x":558,"y":437},
+    {"id":1007310,"value":0.025,"location":"Chai","measure":"AGOC-3A","grupo":2,"x":558,"y":437},
+    {"id":1008672,"value":0.03,"location":"Chai","measure":"AGOC-3A","grupo":2,"x":558,"y":437},
+    {"id":991221,"value":0.026,"location":"Boonsri","measure":"AGOC-3A","grupo":1,"x":475,"y":135},
+    {"id":992592,"value":0.031,"location":"Boonsri","measure":"AGOC-3A","grupo":1,"x":475,"y":135},
+    {"id":993959,"value":0.027,"location":"Boonsri","measure":"AGOC-3A","grupo":1,"x":475,"y":135},
+    {"id":1004683,"value":0.028,"location":"Kohsoom","measure":"AGOC-3A","grupo":4,"x":704,"y":257},
+    {"id":1009606,"value":0.025,"location":"Somchair","measure":"AGOC-3A","grupo":5,"x":260,"y":451},
+    {"id":1010382,"value":0.024,"location":"Busarakhan","measure":"AGOC-3A","grupo":7,"x":730,"y":374},
+    {"id":1006003,"value":0.025,"location":"Chai","measure":"AGOC-3A","grupo":2,"x":558,"y":437},
+    {"id":1007391,"value":0.031,"location":"Chai","measure":"AGOC-3A","grupo":2,"x":558,"y":437},
+    {"id":1008753,"value":0.116,"location":"Chai","measure":"AGOC-3A","grupo":2,"x":558,"y":437},
+    {"id":1020666,"value":0.025,"location":"Kannika","measure":"AGOC-3A","grupo":3,"x":618,"y":705},
+    {"id":1021760,"value":0.025,"location":"Kannika","measure":"AGOC-3A","grupo":3,"x":618,"y":705},
+    {"id":1022917,"value":0.03,"location":"Kannika","measure":"AGOC-3A","grupo":3,"x":618,"y":705},
+    {"id":1024072,"value":0.023,"location":"Sakda","measure":"AGOC-3A","grupo":6,"x":488,"y":828},
+    {"id":1025193,"value":0.025,"location":"Sakda","measure":"AGOC-3A","grupo":6,"x":488,"y":828},
+    {"id":1026314,"value":0.032,"location":"Sakda","measure":"AGOC-3A","grupo":6,"x":488,"y":828},
+    {"id":991326,"value":0.028,"location":"Boonsri","measure":"AGOC-3A","grupo":1,"x":475,"y":135},
+    {"id":992697,"value":0.025,"location":"Boonsri","measure":"AGOC-3A","grupo":1,"x":475,"y":135},
+    {"id":994064,"value":0.024,"location":"Boonsri","measure":"AGOC-3A","grupo":1,"x":475,"y":135},
+    {"id":1004756,"value":0.029,"location":"Kohsoom","measure":"AGOC-3A","grupo":4,"x":704,"y":257},
+    {"id":1020731,"value":0.027,"location":"Kannika","measure":"AGOC-3A","grupo":3,"x":618,"y":705},
+    {"id":1021825,"value":0.026,"location":"Kannika","measure":"AGOC-3A","grupo":3,"x":618,"y":705},
+    {"id":1022982,"value":0.03,"location":"Kannika","measure":"AGOC-3A","grupo":3,"x":618,"y":705},
+    {"id":1024137,"value":0.032,"location":"Sakda","measure":"AGOC-3A","grupo":6,"x":488,"y":828},
+    {"id":1025258,"value":0.023,"location":"Sakda","measure":"AGOC-3A","grupo":6,"x":488,"y":828},
+    {"id":1026379,"value":0.025,"location":"Sakda","measure":"AGOC-3A","grupo":6,"x":488,"y":828},
+    {"id":1004830,"value":0.024,"location":"Kohsoom","measure":"AGOC-3A","grupo":4,"x":704,"y":257},
+    {"id":991396,"value":0.072,"location":"Boonsri","measure":"AGOC-3A","grupo":1,"x":475,"y":135},
+    {"id":992767,"value":0.741,"location":"Boonsri","measure":"AGOC-3A","grupo":1,"x":475,"y":135},
+    {"id":994134,"value":0.226,"location":"Boonsri","measure":"AGOC-3A","grupo":1,"x":475,"y":135},
+    {"id":1006084,"value":0.341,"location":"Chai","measure":"AGOC-3A","grupo":2,"x":558,"y":437},
+    {"id":1007472,"value":0.268,"location":"Chai","measure":"AGOC-3A","grupo":2,"x":558,"y":437},
+    {"id":1008834,"value":0.342,"location":"Chai","measure":"AGOC-3A","grupo":2,"x":558,"y":437},
+    {"id":1009729,"value":0.031,"location":"Somchair","measure":"AGOC-3A","grupo":5,"x":260,"y":451},
+    {"id":1010505,"value":0.043,"location":"Busarakhan","measure":"AGOC-3A","grupo":7,"x":730,"y":374},
+    {"id":1024204,"value":0.389,"location":"Sakda","measure":"AGOC-3A","grupo":6,"x":488,"y":828},
+    {"id":1025325,"value":0.032,"location":"Sakda","measure":"AGOC-3A","grupo":6,"x":488,"y":828},
+    {"id":1026446,"value":0.187,"location":"Sakda","measure":"AGOC-3A","grupo":6,"x":488,"y":828},
+    {"id":991467,"value":0.025,"location":"Boonsri","measure":"AGOC-3A","grupo":1,"x":475,"y":135},
+    {"id":992838,"value":0.031,"location":"Boonsri","measure":"AGOC-3A","grupo":1,"x":475,"y":135},
+    {"id":994205,"value":0.03,"location":"Boonsri","measure":"AGOC-3A","grupo":1,"x":475,"y":135},
+    {"id":1020799,"value":0.026,"location":"Kannika","measure":"AGOC-3A","grupo":3,"x":618,"y":705},
+    {"id":1021893,"value":0.03,"location":"Kannika","measure":"AGOC-3A","grupo":3,"x":618,"y":705},
+    {"id":1023050,"value":0.025,"location":"Kannika","measure":"AGOC-3A","grupo":3,"x":618,"y":705},
+    {"id":1004901,"value":0.032,"location":"Kohsoom","measure":"AGOC-3A","grupo":4,"x":704,"y":257},
+    {"id":1009794,"value":0.124,"location":"Somchair","measure":"AGOC-3A","grupo":5,"x":260,"y":451},
+    {"id":1010542,"value":0.028,"location":"Busarakhan","measure":"AGOC-3A","grupo":7,"x":730,"y":374},
+    {"id":1006272,"value":0.373,"location":"Chai","measure":"AGOC-3A","grupo":2,"x":558,"y":437},
+    {"id":1007634,"value":0.634,"location":"Chai","measure":"AGOC-3A","grupo":2,"x":558,"y":437},
+    {"id":1009022,"value":0.589,"location":"Chai","measure":"AGOC-3A","grupo":2,"x":558,"y":437},
+    {"id":991540,"value":0.03,"location":"Boonsri","measure":"AGOC-3A","grupo":1,"x":475,"y":135},
+    {"id":992911,"value":0.025,"location":"Boonsri","measure":"AGOC-3A","grupo":1,"x":475,"y":135},
+    {"id":994278,"value":0.027,"location":"Boonsri","measure":"AGOC-3A","grupo":1,"x":475,"y":135},
+    {"id":1004970,"value":0.023,"location":"Kohsoom","measure":"AGOC-3A","grupo":4,"x":704,"y":257},
+    {"id":1009883,"value":0.028,"location":"Somchair","measure":"AGOC-3A","grupo":5,"x":260,"y":451},
+    {"id":1010631,"value":0.025,"location":"Busarakhan","measure":"AGOC-3A","grupo":7,"x":730,"y":374},
+    {"id":991610,"value":0.108,"location":"Boonsri","measure":"AGOC-3A","grupo":1,"x":475,"y":135},
+    {"id":992981,"value":0.027,"location":"Boonsri","measure":"AGOC-3A","grupo":1,"x":475,"y":135},
+    {"id":994348,"value":0.03,"location":"Boonsri","measure":"AGOC-3A","grupo":1,"x":475,"y":135},
+    {"id":1005042,"value":0.106,"location":"Kohsoom","measure":"AGOC-3A","grupo":4,"x":704,"y":257},
+    {"id":991680,"value":0.032,"location":"Boonsri","measure":"AGOC-3A","grupo":1,"x":475,"y":135},
+    {"id":993051,"value":0.028,"location":"Boonsri","measure":"AGOC-3A","grupo":1,"x":475,"y":135},
+    {"id":994418,"value":0.025,"location":"Boonsri","measure":"AGOC-3A","grupo":1,"x":475,"y":135}];
+
+  var simulation = d3.forceSimulation(nodes)
+                     .force('charge', d3.forceManyBody().strength(10))
+                     .force('x', d3.forceX(function(d) { return d.x }))
+                     .force('y', d3.forceY(function(d) { return d.y }))
+                     .force('over', d3.forceCollide(7))
+                     .on('tick', ticked);
+            
+  function ticked() {
+      
+          var u = d3.select('svg')
+                    .selectAll('circle')
+                    .data(nodes)
+          u.enter()
+            .append('circle')
+            .attr('r', function(d) { return Math.sqrt(d.value)+3 })
+            .merge(u)
+            .attr('cx', function(d) { return d.x })
+            .attr('cy', function(d) { return d.y })
+            .attr('fill', function(d) { return 'red' })
+          
+          u.exit().remove()
+          }
+      
+  </script>
+</body>
+</html>

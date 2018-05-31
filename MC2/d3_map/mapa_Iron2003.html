@@ -8,24 +8,44 @@ Released under the MIT license: http://jsbin.mit-license.org
 <meta name="robots" content="noindex">
 <meta charset="utf-8">
 <head>
-  <title>Force layout (foci)</title>
+  <title>Concentración de Iron - 2003</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
   
   <style type="text/css">
-  .bgimg {
-    background-image: url('https://raw.githubusercontent.com/diegolpedro/infovis/gh-pages/MC2/img/Waterways%20Final.jpg');
-    background-repeat: no-repeat;
+    .bgimg {
+      background-image: url('https://raw.githubusercontent.com/diegolpedro/infovis/gh-pages/MC2/img/Waterways%20Final.jpg');
+      background-repeat: no-repeat;
+      }
+    
+    .titulo {
+      font: Verdana;
+      display: inline-block;
+      }
+    
+    .centrado{
+      margin-left:    auto;
+      margin-right:   auto;
+      }
+    
+    .contenedor{
+      border: 1px solid black; 
+      padding: 25px; 
+      width: 880px;
     }
   </style>
   
 </head>
 <body>
-  <div id="title">
-    <font face="Arial"; size=8;>Concentración de Iron - 2003</font>
-  </div>  
-  <div id="content" class="bgimg">
-    <svg width="887" height="887">
-    </svg>
+  <div id="contenedor" class="contenedor">
+    <div id="title" class="titulo centrado" style="width: 790px;">
+      <font face="Arial"; size=6;>&nbsp;&nbsp;Concentración de Iron</font>
+    </div>  
+    <div id="title" class="titulo centrado" style="width: 10px;">
+      <font face="Arial"; size=6;>2003</font>
+    </div>  
+    <div id="content" class="bgimg">
+      <svg width="887" height="887"></svg>
+    </div>
   </div>
   
   <script>
@@ -36,7 +56,7 @@ Released under the MIT license: http://jsbin.mit-license.org
 		{"id":293442,"value":1.168,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
 		{"id":294060,"value":0.611,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
 		{"id":300356,"value":0.406,"location":"Somchair","measure":"Iron","grupo":5,"x":273,"y":461},
-		{"id":300728,"value":0.171,"location":"Busarakhan","measure":"Iron","grupo":7,"x":699,"y":374},
+		{"id":300728,"value":0.171,"location":"Busarakhan","measure":"Iron","grupo":7,"x":800,"y":374},
 		{"id":303126,"value":0.375,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
 		{"id":303490,"value":0.419,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
 		{"id":303836,"value":0.339,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
@@ -64,7 +84,7 @@ Released under the MIT license: http://jsbin.mit-license.org
 		{"id":299103,"value":0.816,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
 		{"id":299771,"value":0.806,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
 		{"id":300387,"value":0.552,"location":"Somchair","measure":"Iron","grupo":5,"x":273,"y":461},
-		{"id":300761,"value":0.351,"location":"Busarakhan","measure":"Iron","grupo":7,"x":699,"y":374},
+		{"id":300761,"value":0.351,"location":"Busarakhan","measure":"Iron","grupo":7,"x":800,"y":374},
 		{"id":298451,"value":0.458,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
 		{"id":299137,"value":0.795,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
 		{"id":299805,"value":0.647,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
@@ -97,7 +117,7 @@ Released under the MIT license: http://jsbin.mit-license.org
 		{"id":303934,"value":0.264,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
 		{"id":297997,"value":0.543,"location":"Kohsoom","measure":"Iron","grupo":4,"x":704,"y":257},
 		{"id":300453,"value":0.624,"location":"Somchair","measure":"Iron","grupo":5,"x":273,"y":461},
-		{"id":300827,"value":0.473,"location":"Busarakhan","measure":"Iron","grupo":7,"x":699,"y":374},
+		{"id":300827,"value":0.473,"location":"Busarakhan","measure":"Iron","grupo":7,"x":800,"y":374},
 		{"id":304293,"value":0.355,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
 		{"id":304632,"value":0.530,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
 		{"id":304977,"value":0.637,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
@@ -111,7 +131,7 @@ Released under the MIT license: http://jsbin.mit-license.org
 		{"id":303616,"value":0.439,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
 		{"id":303964,"value":0.718,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
 		{"id":300483,"value":0.665,"location":"Somchair","measure":"Iron","grupo":5,"x":273,"y":461},
-		{"id":300857,"value":0.918,"location":"Busarakhan","measure":"Iron","grupo":7,"x":699,"y":374},
+		{"id":300857,"value":0.918,"location":"Busarakhan","measure":"Iron","grupo":7,"x":800,"y":374},
 		{"id":304323,"value":0.643,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
 		{"id":304662,"value":0.690,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
 		{"id":305007,"value":0.864,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
@@ -139,7 +159,7 @@ Released under the MIT license: http://jsbin.mit-license.org
 		{"id":304689,"value":1.728,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
 		{"id":305034,"value":1.641,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
 		{"id":300510,"value":2.030,"location":"Somchair","measure":"Iron","grupo":5,"x":273,"y":461},
-		{"id":300884,"value":0.721,"location":"Busarakhan","measure":"Iron","grupo":7,"x":699,"y":374},
+		{"id":300884,"value":0.721,"location":"Busarakhan","measure":"Iron","grupo":7,"x":800,"y":374},
 		{"id":293121,"value":0.076,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
 		{"id":293739,"value":0.026,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
 		{"id":294357,"value":0.093,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
@@ -155,7 +175,7 @@ Released under the MIT license: http://jsbin.mit-license.org
 		{"id":298744,"value":17.970,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
 		{"id":300092,"value":20.688,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
 		{"id":300556,"value":24.790,"location":"Somchair","measure":"Iron","grupo":5,"x":273,"y":461},
-		{"id":300930,"value":21.665,"location":"Busarakhan","measure":"Iron","grupo":7,"x":699,"y":374},
+		{"id":300930,"value":21.665,"location":"Busarakhan","measure":"Iron","grupo":7,"x":800,"y":374},
 		{"id":303329,"value":34.413,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
 		{"id":304037,"value":32.000,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
 		{"id":305080,"value":28.901,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
@@ -163,7 +183,7 @@ Released under the MIT license: http://jsbin.mit-license.org
 		{"id":299442,"value":0.190,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
 		{"id":300130,"value":0.234,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
 		{"id":300594,"value":0.250,"location":"Somchair","measure":"Iron","grupo":5,"x":273,"y":461},
-		{"id":300968,"value":1.450,"location":"Busarakhan","measure":"Iron","grupo":7,"x":699,"y":374},
+		{"id":300968,"value":1.450,"location":"Busarakhan","measure":"Iron","grupo":7,"x":800,"y":374},
 		{"id":303367,"value":0.319,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
 		{"id":303705,"value":0.492,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
 		{"id":304073,"value":0.218,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
@@ -176,7 +196,7 @@ Released under the MIT license: http://jsbin.mit-license.org
 		{"id":298208,"value":1.014,"location":"Kohsoom","measure":"Iron","grupo":4,"x":704,"y":257},
 		{"id":299492,"value":0.512,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
 		{"id":300620,"value":3.498,"location":"Somchair","measure":"Iron","grupo":5,"x":273,"y":461},
-		{"id":300994,"value":2.962,"location":"Busarakhan","measure":"Iron","grupo":7,"x":699,"y":374},
+		{"id":300994,"value":2.962,"location":"Busarakhan","measure":"Iron","grupo":7,"x":800,"y":374},
 		{"id":303731,"value":1.323,"location":"Kannika","measure":"Iron","grupo":3,"x":618,"y":705},
 		{"id":304776,"value":1.253,"location":"Sakda","measure":"Iron","grupo":6,"x":488,"y":828},
 		{"id":298852,"value":0.432,"location":"Chai","measure":"Iron","grupo":2,"x":558,"y":437},
@@ -227,7 +247,7 @@ Released under the MIT license: http://jsbin.mit-license.org
 		{"id":294033,"value":0.285,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
 		{"id":294651,"value":0.337,"location":"Boonsri","measure":"Iron","grupo":1,"x":475,"y":135},
 		{"id":298296,"value":0.521,"location":"Kohsoom","measure":"Iron","grupo":4,"x":704,"y":257}];
- 
+    
     
       
       var simulation = d3.forceSimulation(nodes)
